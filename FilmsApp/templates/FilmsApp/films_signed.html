@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+{% load embed_video_tags %}
+
+    {% for pelicula in peliculas %}
+
+  <!-- Heading -->
+  <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{pelicula.portada.url}}" alt="" style="width: 50%;">
+         <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-lower">{{pelicula.titulo}}</span>
+            <span class="section-heading-upper">{{pelicula.agno}}</span>
+            <span class="section-heading-upper">"Starring:" {{pelicula.actores}}</span>
+            <span class="section-heading-upper">{% video pelicula.trailer %}</span>
+            <span class="section-heading-upper">{{fav.pelicula}}</span>
+            
+          </h2>
+                 
+        </div>
+      </div>
+    </div>
+  </section>
+
+      
+    {% endfor %}
+
+{% endblock %}
+
+
